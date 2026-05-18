@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ GHOST-WIRE-Multi-Protocol-IoT-Security-Diagnostic-Toolset
+# ⚡ GHOST WIRE
 ### Multi-Protocol IoT Security Diagnostic Toolset
 
 ![ESP32](https://img.shields.io/badge/Platform-ESP32-blue?style=for-the-badge&logo=espressif&logoColor=white)
@@ -13,14 +13,13 @@
 
 ---
 
-<!-- Replace the path below with your actual device image once uploaded -->
-![Ghost Wire Device](Logos%20And%20Pics/Finished%20Product.png)
+![Ghost Wire Device](Logos%20And%20Pics/Main_Header.jpg)
 
 </div>
 
 ---
 
-## 📑 Table of Content
+## 📑 Table of Contents
 
 - [About the Project](#-about-the-project)
 - [Project Pictures](#-project-pictures)
@@ -64,7 +63,7 @@ By time-sharing a single radio across multiple protocols, Ghost Wire reduces sys
 
 | Front View | Back View |
 |:-----------:|:---------:|
-| ![Front](Logos%20And%20Pics/Finished%20Product.png) | ![Back](Logos%20And%20Pics/Finished%20Product%20Both%20Sides.png) |
+| ![Front](Logos%20And%20Pics/Front_View.jpg) | ![Back](Logos%20And%20Pics/Back_View.jpg) |
 
 > 📸 *Additional images of PCB layouts, antenna circuits, and module assemblies are located in the [`Logos And Pics/`](./Logos%20And%20Pics/) folder.*
 
@@ -114,14 +113,18 @@ All firmware used in this project is open-source. Full credit and thanks go to t
 ---
 
 ### 3. 👾 Evil-CYD
-- **Function:** Additional payload launcher customized for the CYD ESP32 board. Extends Marauder capabilities with community-contributed attack modules.
-- **Source:** Community fork — link to be added.
+- **Author:** [7h30th3r0n3](https://github.com/7h30th3r0n3)
+- **Repo:** [Evil-M5Project (Evil-CYD)](https://github.com/7h30th3r0n3/Evil-M5Project)
+- **Function:** Additional payload launcher customized for the CYD ESP32 board. Extends Marauder capabilities with Evil Portal (captive portal), EAPOL capture, wardriving, and community-contributed attack modules.
+- **License:** See original repo.
 
 ---
 
-### 4. 👻 Ghost_ESP_IDF
-- **Function:** A custom ESP-IDF based launcher tailored for Ghost Wire hardware. Provides low-level control over RF and BLE stacks.
-- **Source:** Included in [`project/`](./project/) folder.
+### 4. 👻 Ghost ESP (Ghost_ESP_IDF)
+- **Author:** [Spooks4576](https://github.com/Spooks4576) / actively maintained at [GhostESP-Revival](https://github.com/GhostESP-Revival/GhostESP)
+- **Repo:** [Ghost_ESP](https://github.com/Spooks4576/Ghost_ESP)
+- **Function:** A robust ESP-IDF based firmware that transforms the ESP32 into a powerful wireless pen-testing tool. Supports AP/station scanning, beacon spam, deauth attacks, Evil Portal, BLE sniffing, and more. Officially compatible with the CYD ESP32-2432S028 (2.8").
+- **License:** MIT — See original repo.
 
 ---
 
@@ -131,9 +134,11 @@ All firmware used in this project is open-source. Full credit and thanks go to t
 
 ---
 
-### 6. 🚀 Bruce-Launcher
-- **Function:** Multipurpose firmware launcher that allows switching between payloads without re-flashing, acting as a bootloader-level menu.
-- **Source:** To be linked.
+### 6. 🚀 Bruce (Bruce-Launcher)
+- **Author:** [bmorcelli](https://github.com/bmorcelli) & the BruceDevices community
+- **Repo:** [BruceDevices/firmware](https://github.com/BruceDevices/firmware)
+- **Function:** A versatile, predatory ESP32 firmware designed for Red Team operations. Acts as a multi-payload launcher supporting Wi-Fi attacks, BLE tools, RF operations, and more — all without re-flashing. The CYD has a LITE version optimized for launcher compatibility.
+- **License:** AGPL-3.0 — See original repo.
 
 > 📁 All `.bin` firmware files are stored in the [`firmware used/`](./firmware%20used/) folder with their respective flashing instructions.
 
@@ -242,11 +247,17 @@ esptool.py --chip esp32 --port COM3 --baud 921600 write_flash -z 0x1000 firmware
 
 ### SD Card Setup
 
-Some firmware variants require files on an SD card:
+Some firmware variants (Marauder, Ghost ESP, Bruce) require files pre-loaded on an SD card for Evil Portal, wardriving logs, and configuration:
 
-1. Format SD card as **FAT32**
-2. Copy the contents of [`Paste As In Sd card after formatting it/`](./Paste%20As%20In%20Sd%20card%20after%20formatting%20it/) to the root of the SD card
-3. Insert into the CYD ESP32 board's SD slot
+1. Insert your SD card into a PC/laptop card reader
+2. Format the SD card as **FAT32** (use SD Card Formatter or Windows/Mac built-in format tool)
+3. Open the [`SD Card/`](./SD%20Card/) folder from this repository
+4. **Copy all files and folders inside `SD Card/` directly to the root of your SD card** — do not copy the folder itself, only its contents
+5. Safely eject the SD card
+6. Insert it into the CYD ESP32 board's micro-SD slot (located on the back of the board)
+7. Power on the device — firmware will auto-detect the SD card on boot
+
+> ⚠️ **Important:** The SD card root should contain the copied files directly (e.g. `portals/`, `wardrive/`, config files), not wrapped inside another folder. If firmware can't find the SD card, re-check that files are at the root level.
 
 ---
 
@@ -275,8 +286,9 @@ Use DroneB firmware → Scan RC frequencies → Identify active drone control ch
 GHOST-WIRE/
 │
 ├── Logos And Pics/               # Device photos, logos, branding images
-│   ├── Finished Product.png
-│   ├── Finished Product Both Sides.png
+│   ├── Main_Header.jpg           # Main banner image (README header)
+│   ├── Front_View.jpg            # Front view of assembled device
+│   ├── Back_View.jpg             # Back view of assembled device
 │   └── ...
 │
 ├── Schematic And Diagrams/       # Wiring diagrams and PCB schematics
@@ -287,14 +299,16 @@ GHOST-WIRE/
 ├── firmware used/                # All .bin firmware files with flash instructions
 │   ├── BlueJammer.bin
 │   ├── CYD-Marauder.bin
+│   ├── GhostESP.bin
+│   ├── Bruce-CYD.bin
 │   └── ...
 │
-├── Paste As In Sd card after formatting it/   # SD card root contents
+├── SD Card/                      # Copy contents to root of FAT32-formatted SD card
+│   ├── portals/                  # Evil Portal HTML files
+│   └── ...
 │
 ├── project/                      # Ghost_ESP_IDF source and project files
 │
-├── Complete Project Detail.docx  # Full written FYP documentation
-├── Chat Links.docx               # Reference links and resources
 └── README.md                     # This file
 ```
 
@@ -322,11 +336,12 @@ This project stands on the shoulders of the open-source community. Sincere thank
 | Project | Author | Contribution |
 |--------|--------|-------------|
 | [ESP32-BlueJammer](https://github.com/EmenstaNougat/ESP32-BlueJammer) | EmenstaNougat | Core 2.4GHz jamming firmware |
-| [ESP32 Marauder](https://github.com/justcallmekoko/ESP32Marauder) | justcallmekoko | Wi-Fi/BT offensive toolkit |
+| [ESP32 Marauder](https://github.com/justcallmekoko/ESP32Marauder) | justcallmekoko | Wi-Fi/BT offensive toolkit (original) |
 | [CYD-ESP32Marauder](https://github.com/Tony7466/CYD-ESP32Marauder) | Tony7466 | CYD touchscreen Marauder fork |
-| Evil-CYD | Community | CYD payload extensions |
-| Bruce-Launcher | Community | Multi-firmware launcher |
-| DroneB | Community | Drone RF diagnostics |
+| [Evil-M5Project (Evil-CYD)](https://github.com/7h30th3r0n3/Evil-M5Project) | 7h30th3r0n3 | CYD Evil Portal & payload extensions |
+| [Ghost_ESP](https://github.com/Spooks4576/Ghost_ESP) | Spooks4576 | ESP-IDF wireless pen-testing firmware |
+| [GhostESP (Revival)](https://github.com/GhostESP-Revival/GhostESP) | GhostESP-Revival | Active open-source Ghost ESP fork |
+| [Bruce Firmware](https://github.com/BruceDevices/firmware) | BruceDevices / bmorcelli | Predatory multi-payload Red Team firmware |
 
 > **Contributors to this repo:**
 > - [@ShellCMD101](https://github.com/ShellCMD101) — Hardware design, firmware integration, project lead
