@@ -20,7 +20,7 @@
 
 ---
 
-## 📑 Table of Contents
+## 📑 Table of Content
 
 - [About the Project](#-about-the-project)
 - [Project Pictures](#-project-pictures)
