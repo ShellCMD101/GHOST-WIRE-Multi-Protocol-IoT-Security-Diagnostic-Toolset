@@ -13,7 +13,7 @@
 
 ---
 
-![Ghost Wire Device](Logos%20And%20Pics/Main_Header.jpg)
+![Ghost Wire Device](Main_Header.jpg)
 
 </div>
 
@@ -63,7 +63,7 @@ By time-sharing a single radio across multiple protocols, Ghost Wire reduces sys
 
 | Front View | Back View |
 |:-----------:|:---------:|
-| ![Front](Logos%20And%20Pics/Front_View.jpg) | ![Back](Logos%20And%20Pics/Back_View.jpg) |
+| ![Front](Front_View.jpg) | ![Back](/Back_View.jpg) |
 
 > 📸 *Additional images of PCB layouts, antenna circuits, and module assemblies are located in the [`Logos And Pics/`](./Logos%20And%20Pics/) folder.*
 
