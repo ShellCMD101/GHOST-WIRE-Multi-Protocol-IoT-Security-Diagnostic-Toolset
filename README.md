@@ -23,7 +23,7 @@
 
 ## 🏆 Achievement: Techon 1nd Position Award 
 
-<img src="https://github.com/Q3hr/SYN-Flood-Mitigation/raw/main/Techon_2nd_Position_Award.jpg" width="500"/>
+<img src="https://github.com/ShellCMD101/GHOST-WIRE-Multi-Protocol-IoT-Security-Diagnostic-Toolset/blob/main/he1.jpg" width="500"/>
 
 
 ---
