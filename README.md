@@ -19,6 +19,24 @@
 
 ---
 
+---
+
+## 🏆 Achievement: Techon 1nd Position Award 
+
+<img src="https://github.com/Q3hr/SYN-Flood-Mitigation/raw/main/Techon_2nd_Position_Award.jpg" width="500"/>
+
+
+---
+
+---
+
+## 🏆 Achievement: Best FYP in the University
+
+<img src="https://github.com/Q3hr/SYN-Flood-Mitigation/raw/main/Techon_2nd_Position_Award.jpg" width="500"/>
+
+
+---
+
 ## 📑 Table of Contents
 
 - [About the Project](#-about-the-project)
